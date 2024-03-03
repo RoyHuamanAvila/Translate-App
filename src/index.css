@@ -7,9 +7,13 @@ body {
   min-height: 100vh;
   margin: 0;
 
+
   @media screen and (min-width: 1024px){
     background-size: contain;
   }
 }
 
 
+* {
+    font-family: "DM Sans", sans-serif;
+}
