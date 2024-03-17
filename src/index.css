@@ -1,5 +1,9 @@
+* {
+  font-family: var(--main-font-family);
+}
+
 body {
-  background-color: #040711;
+  background-color: var(--black);
   background-image: url('/hero_img.jpg');
   background-position: top;
   background-size: auto;
@@ -14,6 +18,3 @@ body {
 }
 
 
-* {
-    font-family: "DM Sans", sans-serif;
-}

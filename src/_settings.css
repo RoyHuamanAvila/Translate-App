@@ -1,0 +1,24 @@
+:root {
+    /*Tipo de fuente*/
+    --main-font-family: "DM Sans", sans-serif;
+
+    /*Tamaños de fuente*/
+    --small-font-size: 14px;
+    --medium-font-size: 16px;
+    ---large-font-size: 20px;
+
+    /*Relleno de fuente*/
+    --medium-font-weight: 500;
+    --bold-font-weight: 700;
+
+    /*Colores*/
+    --mid-night-blue: #121826cc;
+    --gunmetal: #212936cc;
+    --cornflower-blue: #7CA9F3;
+    --royal-blue: #3662E3;
+    --ghost-white: #F9FAFB;
+    --light-steel-blue: #CDD5E0;
+    --slate-gray: #4D5562;
+    --raisin-black: #394150;
+    --black: #040711;
+}

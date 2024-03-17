@@ -1,6 +1,6 @@
 .card-translate {
-  background-color: #212936cc;
-  border: 1px solid #4D5562;
+  background-color: var(--gunmetal);
+  border: 1px solid var(--slate-gray);
   border-radius: 1rem;
   padding: 2rem 2rem 1.5rem 2rem;
   margin-bottom: 1rem;
@@ -12,7 +12,7 @@
 }
 
 .language-options {
-  color: #4D5562;  
+  color: var(--slate-gray);  
 
   input[type="radio"] {
     appearance: none;
@@ -23,25 +23,25 @@
   padding: 0.5rem;
   border-radius: 0.75rem;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: var(--bold-font-weight);
 }
 
 .language-radio:checked + label {
-  background-color: #4D5562;
-  color: #fff;
+  background-color: var(--slate-gray);
+  color: var(--ghost-white);
 }
 
 hr {
-  border: 1px solid #4D5562;
+  border: 1px solid var(--slate-gray);
 }
 
 textarea {
   padding: 1rem 0;
   font-size: 1rem;
   background-color: transparent;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 700;
-  color: #F9FAFB;
+  font-family: var(--main-font-family);
+  font-weight: var(--bold-font-weight);
+  color: var(--ghost-white);
   border: none;
   resize: none;
 }
@@ -63,7 +63,7 @@ textarea:focus {
 
   button {
     background-color: transparent;
-    border: 1px solid #4D5562;
+    border: 1px solid var(--slate-gray);
     border-radius: 0.5rem;    
 
     img {
@@ -77,10 +77,10 @@ textarea:focus {
 .translate-button {
   display: flex;
   align-items: center;
-  font-weight: 700;
-  background-color: #3662E3;
-  color: #F9FAFB;
+  font-weight: var(--bold-font-weight);
+  background-color: var(--royal-blue);
+  color: var(--ghost-white);
   padding: 0.5rem 2rem;
   border-radius: 0.5rem;
-  border: 1px solid #7CA9F3;
+  border: 1px solid var(--cornflower-blue);
 }
