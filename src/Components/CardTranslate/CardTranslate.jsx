@@ -3,12 +3,17 @@ import './CardTranslate.css'
 import { useState } from 'react';
 
 const languages = [
-  "Detect_Language",
-  "English",
-  "French"
+  "detect_language",
+  "english",
+  "french"
 ];
 
-const LanguageRadio = ({ language }) => {
+const otherLanguages = [
+  "spanish",
+  "france"
+]
+
+const LanguageRadio = ({ language, handleSelectLanguage }) => {
   return (
     <span className='language-radio-control'>
       <input
@@ -17,6 +22,8 @@ const LanguageRadio = ({ language }) => {
         id={language}
         name='language'
         defaultChecked={language === languages[0]}
+        onChange={handleSelectLanguage}
+        value={language}
       ></input>
       <label className='language-label' htmlFor={language}>{language.replace('_', ' ')}</label>
     </span>
@@ -25,10 +32,12 @@ const LanguageRadio = ({ language }) => {
 
 LanguageRadio.propTypes = {
   language: propTypes.string,
+  handleSelectLanguage: propTypes.func,
 }
 
 const CardTranslate = () => {
   const [text, setText] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
   const handleInput = (e) => {
     const targetText = e.target.value;
@@ -37,16 +46,25 @@ const CardTranslate = () => {
     setText(textToTranslate);
   }
 
+  const handleSelectLanguage = (e) => {
+    setSelectedLanguage(e.target.value);
+  }
+
   return (
     <form className={`card-translate`}>
       <div className="card-translate__header">
         <div className="language-options">
           {
-            languages.map(language => <LanguageRadio key={language} language={language} />)
+            languages.map(language => <LanguageRadio key={language} language={language} handleSelectLanguage={handleSelectLanguage} />)
           }
         </div>
-        <select className='language-select'>
-          <option value="Spanish">Spanish</option>
+        <select
+          className='language-select'
+          onChange={handleSelectLanguage}
+        >
+          {
+            otherLanguages.map(language => <option key={language}>{language}</option>)
+          }
         </select>
       </div>
       <hr />
