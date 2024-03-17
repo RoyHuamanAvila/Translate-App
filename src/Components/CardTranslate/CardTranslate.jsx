@@ -1,5 +1,6 @@
 import propTypes from 'prop-types';
 import './CardTranslate.css'
+import { useState } from 'react';
 
 const languages = [
   "Detect_Language",
@@ -27,6 +28,15 @@ LanguageRadio.propTypes = {
 }
 
 const CardTranslate = () => {
+  const [text, setText] = useState('');
+
+  const handleInput = (e) => {
+    const targetText = e.target.value;
+    let textToTranslate = targetText.substring(0, 500);
+
+    setText(textToTranslate);
+  }
+
   return (
     <form className={`card-translate`}>
       <div className="card-translate__header">
@@ -40,9 +50,16 @@ const CardTranslate = () => {
         </select>
       </div>
       <hr />
-      <textarea name="text-to-translate" id="text-to-translate" cols="30" rows="5" defaultValue={'Hello, how are you?'}>
+      <textarea
+        name="text-to-translate"
+        id="text-to-translate"
+        cols="30"
+        rows="5"
+        onChange={handleInput}
+        value={text}
+      >
       </textarea>
-      <p className='card-translate__count'>19/500</p>
+      <p className='card-translate__count'>{text.length}/500</p>
       <div className="card-translate__footer">
         <div className="card-translate__buttons">
           <button>

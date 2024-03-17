@@ -121,3 +121,7 @@ textarea:focus {
     font-size: var(--medium-font-size);
   }  
 }
+
+textarea {
+  width: 100%;
+}
