@@ -1,5 +1,5 @@
 import './App.css'
-import CardTranslate from './Components/CardTranslate/CardTranslate'
+import CardTranslate from './Components/CardTranslate'
 
 function App() {
   return (
