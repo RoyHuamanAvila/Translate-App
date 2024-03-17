@@ -18,6 +18,7 @@ const CardTranslate = () => {
       <hr />
       <textarea name="text-to-translate" id="text-to-translate" cols="30" rows="5" defaultValue={'Hello, how are you?'}>
       </textarea>
+      <p className='card-translate__count'>19/500</p>
       <div className="card-translate__footer">
         <div className="card-translate__buttons">
           <button>
