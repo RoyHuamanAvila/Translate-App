@@ -35,6 +35,9 @@ const CardTranslate = () => {
             languages.map(language => <LanguageRadio key={language} language={language} />)
           }
         </div>
+        <select className='language-select'>
+          <option value="Spanish">Spanish</option>
+        </select>
       </div>
       <hr />
       <textarea name="text-to-translate" id="text-to-translate" cols="30" rows="5" defaultValue={'Hello, how are you?'}>
