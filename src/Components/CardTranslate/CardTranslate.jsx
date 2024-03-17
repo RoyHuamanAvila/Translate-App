@@ -1,18 +1,39 @@
+import propTypes from 'prop-types';
 import './CardTranslate.css'
+
+const languages = [
+  "Detect_Language",
+  "English",
+  "French"
+];
+
+const LanguageRadio = ({ language }) => {
+  return (
+    <span className='language-radio-control'>
+      <input
+        className='language-radio'
+        type='radio'
+        id={language}
+        name='language'
+        defaultChecked={language === languages[0]}
+      ></input>
+      <label className='language-label' htmlFor={language}>{language.replace('_', ' ')}</label>
+    </span>
+  )
+}
+
+LanguageRadio.propTypes = {
+  language: propTypes.string,
+}
 
 const CardTranslate = () => {
   return (
     <form className={`card-translate`}>
       <div className="card-translate__header">
         <div className="language-options">
-          <input className='language-radio' type="radio" id='detect_language' name='language' />
-          <label className='language-label' htmlFor="detect_language">Detect Language</label>
-
-          <input className='language-radio' type="radio" id='english' name='language' defaultChecked />
-          <label className='language-label' htmlFor="english">English</label>
-
-          <input className='language-radio' type="radio" id='french' name='language' />
-          <label className='language-label' htmlFor="french">French</label>
+          {
+            languages.map(language => <LanguageRadio key={language} language={language} />)
+          }
         </div>
       </div>
       <hr />
@@ -35,4 +56,4 @@ const CardTranslate = () => {
     </form>
   )
 }
-export default CardTranslate
+export default CardTranslate;
