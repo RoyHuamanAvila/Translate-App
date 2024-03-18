@@ -23,6 +23,7 @@
 .language-options {    
   color: var(--slate-gray);    
   display: flex;
+  gap: 1rem;
 
   input[type="radio"] {
     appearance: none;
@@ -110,6 +111,7 @@ textarea:focus {
 }
 
 .language-select {
+  margin-left: 1rem;
   text-transform: capitalize;
   background: transparent;
   border: 0;
