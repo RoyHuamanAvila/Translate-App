@@ -1,7 +1,6 @@
 import propTypes from 'prop-types';
-import { mainLanguages } from '../../LanguagesSettings.json';
 
-const LanguageRadio = ({ language, handleSelectLanguage }) => {
+const LanguageRadio = ({ language, handleSelectLanguage, selectedLanguage }) => {
   return (
     <span className='language-radio-control'>
       <input
@@ -9,9 +8,9 @@ const LanguageRadio = ({ language, handleSelectLanguage }) => {
         type='radio'
         id={language}
         name='language'
-        defaultChecked={language === mainLanguages[0]}
         onChange={handleSelectLanguage}
         value={language}
+        checked={language === selectedLanguage ? true : false}
       ></input>
       <label className='language-label' htmlFor={language}>{language.replace('_', ' ')}</label>
     </span>
@@ -21,6 +20,7 @@ const LanguageRadio = ({ language, handleSelectLanguage }) => {
 LanguageRadio.propTypes = {
   language: propTypes.string,
   handleSelectLanguage: propTypes.func,
+  selectedLanguage: propTypes.string
 }
 
 export default LanguageRadio;

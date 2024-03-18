@@ -1,9 +1,10 @@
 import { useState } from "react";
 import CardTranslateView from "./CardTranslateView"
+import { mainLanguages } from '../../LanguagesSettings.json'
 
 const CardTranslateContainer = () => {
   const [text, setText] = useState('');
-  const [selectedLanguage, setSelectedLanguage] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState(mainLanguages[0]);
 
   const handleInputTextArea = (e) => {
     const targetText = e.target.value;
@@ -23,6 +24,7 @@ const CardTranslateContainer = () => {
       text={text}
       handleInputTextArea={handleInputTextArea}
       handleSelectLanguage={handleSelectLanguage}
+      selectedLanguage={selectedLanguage}
     />
   )
 }

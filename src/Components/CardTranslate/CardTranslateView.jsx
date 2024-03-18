@@ -1,20 +1,30 @@
-import propTypes, { func } from 'prop-types';
+import { func, string } from 'prop-types';
 import './CardTranslate.css'
 import LanguageRadio from '../LanguageRadio/LanguageRadio'
 import { mainLanguages, otherLanguages } from '../../LanguagesSettings.json'
 
-const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage }) => {
+const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, selectedLanguage }) => {
   return (
     <form className={`card-translate`}>
       <div className="card-translate__header">
         <div className="language-options">
           {
-            mainLanguages.map(language => <LanguageRadio key={language} language={language} handleSelectLanguage={handleSelectLanguage} />)
+            mainLanguages.map(language => {
+              return (
+                <LanguageRadio
+                  key={language}
+                  language={language}
+                  handleSelectLanguage={handleSelectLanguage}
+                  selectedLanguage={selectedLanguage}
+                />
+              )
+            })
           }
         </div>
         <select
-          className='language-select'
+          className={`language-select ${otherLanguages.includes(selectedLanguage) ? 'selected' : ''}`}
           onChange={handleSelectLanguage}
+          onClick={handleSelectLanguage}
         >
           {
             otherLanguages.map(language => <option key={language}>{language}</option>)
@@ -50,8 +60,9 @@ const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage }) 
 }
 
 CardTranslateView.propTypes = {
-  text: propTypes.string,
+  text: string,
   handleInputTextArea: func,
-  handleSelectLanguage: func
+  handleSelectLanguage: func,
+  selectedLanguage: string,
 }
 export default CardTranslateView;
