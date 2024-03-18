@@ -1,4 +1,4 @@
 {
   "mainLanguages": ["detect_language", "english", "french"],
-  "otherLanguages": ["spanish", "france"]
+  "otherLanguages": ["spanish", "german"]
 }
