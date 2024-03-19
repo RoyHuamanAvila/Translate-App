@@ -18,6 +18,11 @@
   align-items: center;
   padding-bottom: 1rem;
   overflow-x: scroll;
+  -ms-overflow-style: none;  
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .language-options {    
