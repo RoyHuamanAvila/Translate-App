@@ -1,7 +1,7 @@
 .card-translate {
   background-color: var(--gunmetal);
   border: 1px solid var(--slate-gray);
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   padding: 1.5rem 1rem 1.5rem 1rem;
   margin-bottom: 1rem;
   font-size: var(--small-font-size);
@@ -44,10 +44,10 @@
   text-transform: capitalize;
   text-wrap: nowrap;
   display: inline-block;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   cursor: pointer;
-  font-weight: var(--medium-font-weight);
+  font-weight: var(--bold-font-weight);
 }
 
 .language-radio:checked + label {
@@ -87,12 +87,12 @@ textarea:focus {
 
   button {
     background-color: transparent;
-    border: 1px solid var(--slate-gray);
-    border-radius: 0.5rem;    
+    border: 2px solid var(--slate-gray);
+    border-radius: 0.75rem;   
+    aspect-ratio: 1/1; 
 
     img {
-      display: block;
-      padding: 0.25rem 0;
+      display: block;      
     }
   }
 }
@@ -107,6 +107,11 @@ textarea:focus {
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   border: 1px solid var(--cornflower-blue);
+  font-size: var(--small-font-size);
+
+  @media screen and (min-width: 640px) {
+    font-size: var(--medium-font-size);
+  }  
 }
 
 .card-translate__count {
@@ -139,4 +144,8 @@ textarea:focus {
 
 textarea {
   width: 100%;
+  
+  @media screen and (min-width: 640px) {
+    font-size: var(--medium-font-size);
+  }  
 }
