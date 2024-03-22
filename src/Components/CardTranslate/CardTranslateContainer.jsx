@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CardTranslateView from "./CardTranslateView"
+import { copyToClipBoard } from "../../utils";
 //import { mainLanguages } from '../../LanguagesSettings.json'
 
 const CardTranslateContainer = () => {
   const [text, setText] = useState('Hello, how are you?');
   const [selectedLanguage, setSelectedLanguage] = useState("english");
+  const textAreaRef = useRef(null);
 
   const handleInputTextArea = (e) => {
     const targetText = e.target.value;
@@ -17,6 +19,10 @@ const CardTranslateContainer = () => {
     setSelectedLanguage(e.target.value);
   }
 
+  const handleCopyToClipboard = (e) => {
+    e.preventDefault();
+    copyToClipBoard(textAreaRef.current.value);
+  }
   return (
     <CardTranslateView
       to={''}
@@ -25,6 +31,8 @@ const CardTranslateContainer = () => {
       handleInputTextArea={handleInputTextArea}
       handleSelectLanguage={handleSelectLanguage}
       selectedLanguage={selectedLanguage}
+      textAreaRef={textAreaRef}
+      handleCopyToClipboard={handleCopyToClipboard}
     />
   )
 }

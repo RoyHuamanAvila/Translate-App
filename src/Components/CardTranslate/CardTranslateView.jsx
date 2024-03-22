@@ -1,9 +1,9 @@
-import { func, string } from 'prop-types';
+import { any, func, oneOfType, shape, string, } from 'prop-types';
 import './CardTranslate.css'
 import LanguageRadio from '../LanguageRadio/LanguageRadio'
 import { mainLanguages, otherLanguages } from '../../LanguagesSettings.json'
 
-const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, selectedLanguage }) => {
+const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, selectedLanguage, textAreaRef, handleCopyToClipboard }) => {
   return (
     <form className={`card-translate`}>
       <div className="card-translate__header">
@@ -39,6 +39,7 @@ const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, se
         rows="5"
         onChange={handleInputTextArea}
         value={text}
+        ref={textAreaRef}
       >
       </textarea>
       <p className='card-translate__count'>{text.length}/500</p>
@@ -47,7 +48,7 @@ const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, se
           <button>
             <img src="/sound_max_fill.svg" alt="Sound icon" />
           </button>
-          <button>
+          <button onClick={handleCopyToClipboard}>
             <img src="/Copy.svg" alt="Copy icon" />
           </button>
         </div>
@@ -64,5 +65,10 @@ CardTranslateView.propTypes = {
   handleInputTextArea: func,
   handleSelectLanguage: func,
   selectedLanguage: string,
+  textAreaRef: oneOfType([
+    func,
+    shape({ current: any })
+  ]),
+  handleCopyToClipboard: func,
 }
 export default CardTranslateView;
