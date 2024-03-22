@@ -1,9 +1,18 @@
-import { any, func, oneOfType, shape, string, } from 'prop-types';
 import './CardTranslate.css'
 import LanguageRadio from '../LanguageRadio/LanguageRadio'
 import { mainLanguages, otherLanguages } from '../../LanguagesSettings.json'
+import { FC, FormEvent, RefObject } from 'react'
 
-const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, selectedLanguage, textAreaRef, handleCopyToClipboard }) => {
+interface CardTranslateViewProps {
+  originalText: string;
+  originalLanguage: string;
+  changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
+  changeOriginalLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>) => void;
+  textAreaRef: RefObject<HTMLTextAreaElement>
+}
+
+const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef }) => {
   return (
     <form className={`card-translate`}>
       <div className="card-translate__header">
@@ -14,17 +23,17 @@ const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, se
                 <LanguageRadio
                   key={language}
                   language={language}
-                  handleSelectLanguage={handleSelectLanguage}
-                  selectedLanguage={selectedLanguage}
+                  changeLanguage={changeOriginalLanguage}
+                  currentOriginalLanguage={originalLanguage}
                 />
               )
             })
           }
         </div>
         <select
-          className={`language-select ${otherLanguages.includes(selectedLanguage) ? 'selected' : ''}`}
-          onChange={handleSelectLanguage}
-          onClick={handleSelectLanguage}
+          title='Language'
+          className={`language-select ${otherLanguages.includes(originalLanguage) ? 'selected' : ''}`}
+          onClick={changeOriginalLanguage}
         >
           {
             otherLanguages.map(language => <option key={language}>{language}</option>)
@@ -35,14 +44,15 @@ const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, se
       <textarea
         name="text-to-translate"
         id="text-to-translate"
-        cols="30"
-        rows="5"
-        onChange={handleInputTextArea}
-        value={text}
+        cols={30}
+        rows={5}
+        onChange={changeOriginalText}
+        value={originalText}
         ref={textAreaRef}
+        placeholder='Escribe...'
       >
       </textarea>
-      <p className='card-translate__count'>{text.length}/500</p>
+      <p className='card-translate__count'>{originalText.length}/500</p>
       <div className="card-translate__footer">
         <div className="card-translate__buttons">
           <button>
@@ -58,17 +68,5 @@ const CardTranslateView = ({ text, handleInputTextArea, handleSelectLanguage, se
       </div>
     </form>
   )
-}
-
-CardTranslateView.propTypes = {
-  text: string,
-  handleInputTextArea: func,
-  handleSelectLanguage: func,
-  selectedLanguage: string,
-  textAreaRef: oneOfType([
-    func,
-    shape({ current: any })
-  ]),
-  handleCopyToClipboard: func,
 }
 export default CardTranslateView;
