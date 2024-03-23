@@ -50,6 +50,7 @@ const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage,
         value={originalText}
         ref={textAreaRef}
         placeholder='Escribe...'
+        maxLength={500}
       >
       </textarea>
       <p className='card-translate__count'>{originalText.length}/500</p>
