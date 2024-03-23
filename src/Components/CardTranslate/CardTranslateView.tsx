@@ -14,7 +14,7 @@ interface CardTranslateViewProps {
 
 const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef }) => {
   return (
-    <form className={`card-translate`}>
+    <form className='card'>
       <div className="card-translate__header">
         <div className="language-options">
           {
