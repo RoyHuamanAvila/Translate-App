@@ -48,11 +48,13 @@
   border-radius: 0.75rem;
   cursor: pointer;
   font-weight: var(--bold-font-weight);
+  transition: 0.25s all;
 }
 
 .language-radio:checked + label {
   background-color: var(--slate-gray);
   color: var(--ghost-white);
+  transition: 0.25s all;
 }
 
 hr {
@@ -137,10 +139,12 @@ textarea:focus {
   padding: 0.5rem;
   outline: none;
   border-radius: 0.75rem;
+  transition: 0.25s all;
 
   &.selected {
     background-color: var(--slate-gray);
     color: var(--ghost-white);
+    transition: 0.25s all;
   }
 
   @media screen and (min-width: 640px) {
