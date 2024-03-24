@@ -49,6 +49,11 @@
   cursor: pointer;
   font-weight: var(--bold-font-weight);
   transition: 0.25s all;
+
+  &:hover {
+    background-color: var(--raisin-black);
+    color: var(--light-steel-blue);
+  }
 }
 
 .language-radio:checked + label {
@@ -140,6 +145,11 @@ textarea:focus {
   outline: none;
   border-radius: 0.75rem;
   transition: 0.25s all;
+
+  &:hover {
+    background-color: var(--raisin-black);
+    color: var(--light-steel-blue);
+  }
 
   &.selected {
     background-color: var(--slate-gray);
