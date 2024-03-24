@@ -60,3 +60,8 @@
     transition: 0.25s all;
   }
 }
+
+button, label {
+  -webkit-user-select:none;
+  user-select: none;
+}
