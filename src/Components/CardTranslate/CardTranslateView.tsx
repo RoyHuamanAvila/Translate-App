@@ -1,22 +1,12 @@
 import './CardTranslate.css'
 import LanguageRadio from '../LanguageRadio/LanguageRadio'
 import { mainLanguages, otherLanguages } from '../../language.config'
-import { FC, FormEvent, RefObject } from 'react'
-import { LanguageCode } from '../../Types';
+import { FC } from 'react'
 import { getLanguageName } from '../../utils';
 import { Copy, SortAlfa, SoundMaxFill } from "../SVG";
+import type { CardTranslateView } from '../../Types';
 
-interface CardTranslateViewProps {
-  originalText: string;
-  originalLanguage: LanguageCode;
-  changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
-  changeOriginalLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>) => void;
-  textAreaRef: RefObject<HTMLTextAreaElement>
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-}
-
-const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef, handleSubmit }) => {
+const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef, handleSubmit }) => {
   return (
     <form className='card' onSubmit={handleSubmit}>
       <div className="card-translate__header">

@@ -1,17 +1,9 @@
 import { FC, FormEvent, useRef } from "react";
 import CardTranslateView from "./CardTranslateView"
 import { copyToClipBoard } from "../../utils";
-import { LanguageCode } from "../../Types";
+import type { CardTranslate } from "../../Types";
 
-interface CardTranslateContainerProps {
-  originalText: string;
-  originalLanguage: LanguageCode;
-  changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
-  changeOriginalLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-}
-
-const CardTranslateContainer: FC<CardTranslateContainerProps> = ({ originalText, originalLanguage, changeOriginalText, changeOriginalLanguage, handleSubmit }) => {
+const CardTranslateContainer: FC<CardTranslate> = ({ originalText, originalLanguage, changeOriginalText, changeOriginalLanguage, handleSubmit }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleCopyToClipboard = (e: FormEvent<HTMLButtonElement>) => {

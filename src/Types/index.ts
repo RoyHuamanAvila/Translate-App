@@ -1,3 +1,5 @@
+import { FormEvent, RefObject } from "react";
+
 export interface LanguageConfig {
   mainLanguages: LanguageCode[];
   otherLanguages: LanguageCode[];
@@ -80,4 +82,19 @@ export interface Match {
   "create-date": string;
   "last-update-date": string;
   match: number;
+}
+
+export interface CardTranslate {
+  originalText: string;
+  originalLanguage: LanguageCode;
+  changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
+  changeOriginalLanguage: (
+    e: FormEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+}
+
+export interface CardTranslateView extends CardTranslate {
+  handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>) => void;
+  textAreaRef: RefObject<HTMLTextAreaElement>;
 }
