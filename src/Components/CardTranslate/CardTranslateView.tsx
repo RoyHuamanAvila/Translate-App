@@ -1,11 +1,13 @@
 import './CardTranslate.css'
 import LanguageRadio from '../LanguageRadio/LanguageRadio'
-import { mainLanguages, otherLanguages } from '../../LanguagesSettings.json'
+import { mainLanguages, otherLanguages } from '../../language.config'
 import { FC, FormEvent, RefObject } from 'react'
+import { LanguageCode } from '../../Types';
+import { getLanguageName } from '../../utils';
 
 interface CardTranslateViewProps {
   originalText: string;
-  originalLanguage: string;
+  originalLanguage: LanguageCode;
   changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
   changeOriginalLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void;
   handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>) => void;
@@ -18,13 +20,13 @@ const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage,
       <div className="card-translate__header">
         <div className="language-options">
           {
-            mainLanguages.map(language => {
+            mainLanguages.map((language) => {
               return (
                 <LanguageRadio
                   key={language}
-                  language={language}
+                  languageCode={language}
                   changeLanguage={changeOriginalLanguage}
-                  currentOriginalLanguage={originalLanguage}
+                  currentOriginalLanguageCode={originalLanguage}
                 />
               )
             })
@@ -36,7 +38,7 @@ const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage,
           onClick={changeOriginalLanguage}
         >
           {
-            otherLanguages.map(language => <option key={language}>{language}</option>)
+            otherLanguages.map(language => <option key={language} value={language}>{getLanguageName(language)}</option>)
           }
         </select>
       </div>

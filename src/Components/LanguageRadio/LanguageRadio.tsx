@@ -1,24 +1,28 @@
 import { FC, FormEvent } from "react";
+import { LanguageCode } from "../../Types";
+import { getLanguageName } from "../../utils";
 
 interface LanguageRadioProps {
-  language: string;
-  currentOriginalLanguage: string;
+  languageCode: LanguageCode;
+  currentOriginalLanguageCode: LanguageCode;
   changeLanguage: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-const LanguageRadio: FC<LanguageRadioProps> = ({ changeLanguage, currentOriginalLanguage, language }) => {
+const LanguageRadio: FC<LanguageRadioProps> = ({ changeLanguage, currentOriginalLanguageCode, languageCode }) => {
+  const languageName = getLanguageName(languageCode);
+
   return (
-    <span className='language-radio-control'>
+    languageName && <span className='language-radio-control'>
       <input
         className='language-radio'
         type='radio'
-        id={language}
+        id={languageCode}
         name='language'
         onChange={changeLanguage}
-        value={language}
-        checked={language === currentOriginalLanguage ? true : false}
+        value={languageCode}
+        checked={languageCode === currentOriginalLanguageCode ? true : false}
       ></input>
-      <label className='language-label' htmlFor={language}>{language.replace('_', ' ')}</label>
+      <label className='language-label' htmlFor={languageCode}>{languageName.replace('_', ' ')}</label>
     </span>
   )
 }

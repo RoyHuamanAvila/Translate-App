@@ -1,11 +1,12 @@
 import { FormEvent, useRef, useState } from "react";
 import CardTranslateView from "./CardTranslateView"
-import { copyToClipBoard } from "../../utils";
+import { copyToClipBoard, verifiedLangCode } from "../../utils";
+import { LanguageCode } from "../../Types";
 //import { mainLanguages } from '../../LanguagesSettings.json'
 
 const CardTranslateContainer = () => {
   const [originalText, setOriginalText] = useState('Hello, how are you?');
-  const [originalLanguage, setOriginalLanguage] = useState("english");
+  const [originalLanguage, setOriginalLanguage] = useState<LanguageCode>(LanguageCode.English);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const changeOriginalText = (e: FormEvent<HTMLTextAreaElement>) => {
@@ -15,8 +16,9 @@ const CardTranslateContainer = () => {
     setOriginalText(textToTranslate);
   }
 
-  const changeOriginalLanguage = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setOriginalLanguage(e.currentTarget.value);
+  const changeOriginalLanguage = async (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const languageCode: LanguageCode = verifiedLangCode(e.currentTarget.value);
+    setOriginalLanguage(languageCode);
   }
 
   const handleCopyToClipboard = (e: FormEvent<HTMLButtonElement>) => {
