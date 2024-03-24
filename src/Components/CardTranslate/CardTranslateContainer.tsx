@@ -1,25 +1,18 @@
-import { FormEvent, useRef, useState } from "react";
+import { FC, FormEvent, useRef } from "react";
 import CardTranslateView from "./CardTranslateView"
-import { copyToClipBoard, verifiedLangCode } from "../../utils";
+import { copyToClipBoard } from "../../utils";
 import { LanguageCode } from "../../Types";
-//import { mainLanguages } from '../../LanguagesSettings.json'
 
-const CardTranslateContainer = () => {
-  const [originalText, setOriginalText] = useState('Hello, how are you?');
-  const [originalLanguage, setOriginalLanguage] = useState<LanguageCode>(LanguageCode.English);
+interface CardTranslateContainerProps {
+  originalText: string;
+  originalLanguage: LanguageCode;
+  changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
+  changeOriginalLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+}
+
+const CardTranslateContainer: FC<CardTranslateContainerProps> = ({ originalText, originalLanguage, changeOriginalText, changeOriginalLanguage, handleSubmit }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  const changeOriginalText = (e: FormEvent<HTMLTextAreaElement>) => {
-    const targetText = e.currentTarget.value;
-    let textToTranslate = targetText.substring(0, 500);
-
-    setOriginalText(textToTranslate);
-  }
-
-  const changeOriginalLanguage = async (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const languageCode: LanguageCode = verifiedLangCode(e.currentTarget.value);
-    setOriginalLanguage(languageCode);
-  }
 
   const handleCopyToClipboard = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -35,6 +28,7 @@ const CardTranslateContainer = () => {
       changeOriginalLanguage={changeOriginalLanguage}
       handleCopyToClipboard={handleCopyToClipboard}
       textAreaRef={textAreaRef}
+      handleSubmit={handleSubmit}
     />
   )
 }

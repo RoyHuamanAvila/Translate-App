@@ -13,11 +13,12 @@ interface CardTranslateViewProps {
   changeOriginalLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void;
   handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>) => void;
   textAreaRef: RefObject<HTMLTextAreaElement>
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef }) => {
+const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef, handleSubmit }) => {
   return (
-    <form className='card'>
+    <form className='card' onSubmit={handleSubmit}>
       <div className="card-translate__header">
         <div className="language-options">
           {
