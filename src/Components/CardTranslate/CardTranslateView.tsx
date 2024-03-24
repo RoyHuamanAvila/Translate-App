@@ -4,7 +4,7 @@ import { mainLanguages, otherLanguages } from '../../language.config'
 import { FC, FormEvent, RefObject } from 'react'
 import { LanguageCode } from '../../Types';
 import { getLanguageName } from '../../utils';
-import { SortAlfa } from "../SVG";
+import { Copy, SortAlfa, SoundMaxFill } from "../SVG";
 
 interface CardTranslateViewProps {
   originalText: string;
@@ -59,15 +59,15 @@ const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage,
       <p className='card-translate__count'>{originalText.length}/500</p>
       <div className="card-translate__footer">
         <div className="card-translate__buttons">
-          <button>
-            <img src="/sound_max_fill.svg" alt="Sound icon" />
+          <button className='btn' title='Voice'>
+            <SoundMaxFill />
           </button>
-          <button onClick={handleCopyToClipboard}>
-            <img src="/Copy.svg" alt="Copy icon" />
+          <button className='btn' title='Copy' onClick={handleCopyToClipboard}>
+            <Copy />
           </button>
         </div>
         <button className='btn btn--translate' type='submit'>
-          <SortAlfa />  Translate
+          <SortAlfa /> Translate
         </button>
       </div>
     </form>

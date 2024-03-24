@@ -90,10 +90,32 @@ textarea:focus {
     border: 2px solid var(--slate-gray);
     border-radius: 0.75rem;   
     aspect-ratio: 1/1; 
+    transition: 0.25s all;
 
-    img {
-      display: block;      
+    &:hover {
+      border-color: var(--royal-blue);
+      transition: 0.25s all;
+
+      .stroke-dynamic {
+        stroke: var(--royal-blue);
+        transition: 0.25s all;
+      }
+
+      .fill-dynamic {
+        fill: var(--royal-blue);
+        transition: 0.25s all;
+      }
     }
+  }
+
+  .stroke-dynamic {
+    stroke: var(--slate-gray);
+    transition: 0.25s all;
+  }
+
+  .fill-dynamic {
+    fill: var(--slate-gray);
+    transition: 0.25s all;
   }
 }
 
