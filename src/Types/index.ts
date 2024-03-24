@@ -37,3 +37,14 @@ export enum LanguageCode {
   "Slovak" = "sk",
   "Croatian" = "hr",
 }
+
+export interface GetRequestAPI {
+  q: string;
+  langPair: string;
+  mt?: 1 | 0;
+  key?: string;
+  onlyPrivate?: 1 | 0;
+  ip?: string;
+  de?: string;
+  user?: string;
+}
