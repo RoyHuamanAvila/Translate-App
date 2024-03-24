@@ -2,14 +2,18 @@
   font-family: var(--main-font-family);
 }
 
+#root {
+  height: 100%;
+}
+
 body {
   background-color: var(--black);
   background-image: url('/hero_img.jpg');
   background-position: top;
   background-size: auto;
   background-repeat: no-repeat;
-  min-height: 100vh;
-  margin: 0;
+  height: 100vh;  
+  margin: 0;  
 
 
   @media screen and (min-width: 1024px){

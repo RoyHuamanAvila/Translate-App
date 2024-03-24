@@ -128,7 +128,7 @@ textarea:focus {
   border: 0;
   color: var(--slate-gray);
   font-size: var(--small-font-size);
-  font-weight: var(--medium-font-weight);
+  font-weight: var(--semi-font-weight);
   padding: 0.5rem;
   outline: none;
   border-radius: 0.75rem;
