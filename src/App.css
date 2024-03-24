@@ -29,6 +29,7 @@
   align-items: center;
   border-radius: 0.5rem;
   font-size: var(--small-font-size);
+  cursor: pointer;
   
   @media screen and (min-width: 640px) {
     font-size: var(--medium-font-size);
@@ -41,4 +42,21 @@
   color: var(--ghost-white);
   padding: 0.75rem 2rem;  
   border: 1px solid var(--cornflower-blue);
+  transition: 0.25s all;
+
+  &:hover {
+    background-color: var(--cornflower-blue);
+    color: var(--royal-blue);
+    transition: 0.25s all;
+    
+    svg path{
+      stroke: var(--royal-blue);
+      transition: 0.25s all;
+    }
+  }
+
+  svg path{
+    stroke: var(--ghost-white);
+    transition: 0.25s all;
+  }
 }

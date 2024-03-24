@@ -4,6 +4,7 @@ import { mainLanguages, otherLanguages } from '../../language.config'
 import { FC, FormEvent, RefObject } from 'react'
 import { LanguageCode } from '../../Types';
 import { getLanguageName } from '../../utils';
+import { SortAlfa } from "../SVG";
 
 interface CardTranslateViewProps {
   originalText: string;
@@ -66,7 +67,7 @@ const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage,
           </button>
         </div>
         <button className='btn btn--translate' type='submit'>
-          <img src="/Sort_alfa.svg" alt="Sort Alfa" />  Translate
+          <SortAlfa />  Translate
         </button>
       </div>
     </form>
