@@ -65,7 +65,7 @@ const CardTranslateView: FC<CardTranslateViewProps> = ({ changeOriginalLanguage,
             <img src="/Copy.svg" alt="Copy icon" />
           </button>
         </div>
-        <button className='translate-button' type='submit'>
+        <button className='btn btn--translate' type='submit'>
           <img src="/Sort_alfa.svg" alt="Sort Alfa" />  Translate
         </button>
       </div>

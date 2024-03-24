@@ -97,23 +97,6 @@ textarea:focus {
   }
 }
 
-
-.translate-button {
-  display: flex;
-  align-items: center;
-  font-weight: var(--bold-font-weight);
-  background-color: var(--royal-blue);
-  color: var(--ghost-white);
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--cornflower-blue);
-  font-size: var(--small-font-size);
-
-  @media screen and (min-width: 640px) {
-    font-size: var(--medium-font-size);
-  }  
-}
-
 .card-translate__count {
   text-align: right;
   color: var(--slate-gray);
