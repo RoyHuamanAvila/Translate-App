@@ -1,2 +1,1 @@
-import CardTranslate from "./CardTranslateContainer";
-export default CardTranslate;
+export { default as CardTranslate } from "./CardTranslateContainer";

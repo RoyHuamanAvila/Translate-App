@@ -1,8 +1,8 @@
 import { FormEvent, useEffect, useState } from 'react'
 import './App.css'
-import CardTranslate from './Components/CardTranslate'
 import { LanguageCode, Response } from './Types';
 import { verifiedLangCode } from './utils';
+import { CardTranslate, CardResultTranslate } from './Components';
 
 function App() {
   const [originalText, setOriginalText] = useState<string>('Hello, how are you?');
@@ -56,6 +56,7 @@ function App() {
         originalText={originalText}
         handleSubmit={handleSubmit}
       />
+      <CardResultTranslate />
     </div>
   )
 }
