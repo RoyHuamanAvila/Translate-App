@@ -1,0 +1,30 @@
+.multi-option {
+  
+}
+
+.option-input[type="radio"] {
+  appearance: none;
+}
+
+.option-input[type="radio"] + label {
+  text-transform: capitalize;
+  text-wrap: nowrap;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: var(--bold-font-weight);
+  transition: 0.25s all;
+  color: var(--slate-gray);
+
+  &:hover {
+    background-color: var(--raisin-black);
+    color: var(--light-steel-blue);
+  }
+}
+
+.option-input[type="radio"]:checked + label {
+  background-color: var(--slate-gray);
+  color: var(--ghost-white);
+  transition: 0.25s all;
+}
