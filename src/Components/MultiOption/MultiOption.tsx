@@ -1,14 +1,15 @@
 import "./MultiOption.css"
-import { FC, InputHTMLAttributes } from "react"
+import { FC, FormEvent } from "react"
 
 interface MultiOptionProps {
   name: string;
   options: string[];
   prefix?: string;
-  type?: InputHTMLAttributes<HTMLInputElement>["type"];
+  onClick?: (e: FormEvent<HTMLInputElement>) => void;
+  currentOption?: string;
 }
 
-const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, type = "radio" }) => {
+const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, currentOption }) => {
   return (
     <span className="multi-option">
       {
@@ -17,11 +18,13 @@ const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, type = "radi
           return (
             <>
               <input
-                type={type}
                 id={fixedID}
-                title={option}
+                type="radio"
                 className="option-input"
                 name={name}
+                onClick={onClick}
+                value={option}
+                checked={option === currentOption}
               />
               <label htmlFor={fixedID}>{option}</label>
             </>

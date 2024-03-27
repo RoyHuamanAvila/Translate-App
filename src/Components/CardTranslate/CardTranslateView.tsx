@@ -9,7 +9,12 @@ const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, chan
   return (
     <form className='card' onSubmit={handleSubmit}>
       <div className="card-translate__header">
-        <MultiOption name='languageOriginal' options={getAllLanguages()} />
+        <MultiOption
+          name='languageOriginal'
+          options={getAllLanguages()}
+          onClick={changeOriginalLanguage}
+          currentOption={originalLanguage}
+        />
       </div>
       <hr />
       <textarea
