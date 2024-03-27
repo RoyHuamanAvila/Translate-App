@@ -12,6 +12,7 @@ const CardTranslateContainer: FC<CardTranslate> = ({ originalText, originalLangu
       copyToClipBoard(textAreaRef.current.value);
     }
   }
+
   return (
     <CardTranslateView
       originalText={originalText}

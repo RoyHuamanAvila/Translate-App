@@ -1,10 +1,10 @@
 import MultiOption from "../MultiOption/MultiOption"
-import { otherLanguages } from "../../language.config"
+import { getAllLanguages } from "../../utils"
 
 const CardResultTranslate = () => {
   return (
     <div className="card">
-      <MultiOption options={otherLanguages} name="language-traduced" />
+      <MultiOption options={getAllLanguages()} name="language-traduced" />
     </div>
   )
 }

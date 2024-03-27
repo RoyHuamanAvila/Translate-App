@@ -1,10 +1,5 @@
 import { FormEvent, RefObject } from "react";
 
-export interface LanguageConfig {
-  mainLanguages: LanguageCode[];
-  otherLanguages: LanguageCode[];
-}
-
 export enum LanguageCode {
   "Detect_Language" = "autodetect",
   "English" = "en",

@@ -1,38 +1,15 @@
 import './CardTranslate.css'
-import LanguageRadio from '../LanguageRadio/LanguageRadio'
-import { mainLanguages, otherLanguages } from '../../language.config'
 import { FC } from 'react'
-import { getLanguageName } from '../../utils';
 import { Copy, SortAlfa, SoundMaxFill } from "../SVG";
 import type { CardTranslateView } from '../../Types';
+import { MultiOption } from '../MultiOption';
+import { getAllLanguages } from '../../utils';
 
 const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef, handleSubmit }) => {
   return (
     <form className='card' onSubmit={handleSubmit}>
       <div className="card-translate__header">
-        <div className="language-options">
-          {
-            mainLanguages.map((language) => {
-              return (
-                <LanguageRadio
-                  key={language}
-                  languageCode={language}
-                  changeLanguage={changeOriginalLanguage}
-                  currentOriginalLanguageCode={originalLanguage}
-                />
-              )
-            })
-          }
-        </div>
-        <select
-          title='Language'
-          className={`language-select ${otherLanguages.includes(originalLanguage) ? 'selected' : ''}`}
-          onClick={changeOriginalLanguage}
-        >
-          {
-            otherLanguages.map(language => <option key={language} value={language}>{getLanguageName(language)}</option>)
-          }
-        </select>
+        <MultiOption name='languageOriginal' options={getAllLanguages()} />
       </div>
       <hr />
       <textarea
