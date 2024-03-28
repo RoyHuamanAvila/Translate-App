@@ -11,6 +11,7 @@ const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, chan
       <div className="card-translate__header">
         <MultiOption
           name='languageOriginal'
+          prefix='language-original'
           options={getAllLanguages()}
           onClick={changeOriginalLanguage}
           currentOption={originalLanguage}

@@ -16,7 +16,7 @@ const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, cur
         options.map(option => {
           const fixedID = `${prefix}_${option}`
           return (
-            <>
+            <span key={fixedID}>
               <input
                 id={fixedID}
                 type="radio"
@@ -25,9 +25,10 @@ const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, cur
                 onClick={onClick}
                 value={option}
                 checked={option === currentOption}
+                readOnly
               />
               <label htmlFor={fixedID}>{option}</label>
-            </>
+            </span>
           )
         })
       }

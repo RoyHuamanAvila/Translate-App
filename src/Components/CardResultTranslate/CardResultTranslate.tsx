@@ -6,7 +6,7 @@ const CardResultTranslate = () => {
   const { translateText } = useAppSelector(state => state.translate);
   return (
     <form className="card">
-      <MultiOption options={getAllLanguages()} name="language-traduced" />
+      <MultiOption options={getAllLanguages()} name="language-traduced" prefix="language-traduced" />
       <textarea className="text-area" name="text-traduced" title="Text traduced" readOnly value={translateText}></textarea>
     </form>
   )
