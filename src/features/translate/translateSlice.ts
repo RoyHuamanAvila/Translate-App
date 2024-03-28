@@ -9,7 +9,7 @@ interface TranslateState {
 }
 
 const initialState: TranslateState = {
-  originalText: "",
+  originalText: "Hello, how are you?",
   originalLanguageCode: LanguageCode.English,
   translateText: "",
   translateLanguageCode: LanguageCode.French,

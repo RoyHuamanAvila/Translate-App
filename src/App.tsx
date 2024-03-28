@@ -1,33 +1,20 @@
-import { FormEvent, useEffect, useState } from 'react'
 import './App.css'
-import { LanguageCode, Response } from './Types';
-import { verifiedLangCode } from './utils';
+import { Response } from './Types';
 import { CardTranslate, CardResultTranslate } from './Components';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+import { FormEvent, useEffect } from 'react';
+import { setTranslateText } from './features/translate/translateSlice';
 
 function App() {
-  const [originalText, setOriginalText] = useState<string>('Hello, how are you?');
-  const [originalLanguage, setOriginalLanguage] = useState<LanguageCode>(LanguageCode.Detect_Language);
-  const [translatedLanguage, setTranslatedLanguage] = useState<LanguageCode>(LanguageCode.French);
-  const [translatedText, setTranslatedText] = useState<string>('');
-
-  const changeOriginalText = (e: FormEvent<HTMLTextAreaElement>) => {
-    const targetText = e.currentTarget.value;
-    let textToTranslate = targetText.substring(0, 500);
-
-    setOriginalText(textToTranslate);
-  }
-
-  const changeOriginalLanguage = async (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const languageCode: LanguageCode = verifiedLangCode(e.currentTarget.value);
-    setOriginalLanguage(languageCode);
-  }
+  const { originalText, originalLanguageCode, translateLanguageCode } = useAppSelector(state => state.translate);
+  const dispatch = useAppDispatch();
 
   const getResponseAPI = async (q: string, langPair: string) => {
     await fetch(`https://api.mymemory.translated.net/get?q=${q}!&langpair=${langPair}`)
       .then(response => response.json())
       .then((data: Response) => {
         console.log(data);
-        setTranslatedText(data?.responseData?.translatedText);
+        dispatch(setTranslateText(data.responseData.translatedText));
       })
       .catch(error => {
         console.log(error);
@@ -36,26 +23,20 @@ function App() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const langPair = `${originalLanguage}|${translatedLanguage}`;
+    const langPair = `${originalLanguageCode}|${translateLanguageCode}`;
 
     getResponseAPI(originalText, langPair);
   }
 
   useEffect(() => {
-    const langPair = `${originalLanguage}|${translatedLanguage}`;
+    const langPair = `${originalLanguageCode}|${translateLanguageCode}`;
 
     getResponseAPI(originalText, langPair);
   }, []);
 
   return (
     <div className="App">
-      <CardTranslate
-        changeOriginalLanguage={changeOriginalLanguage}
-        changeOriginalText={changeOriginalText}
-        originalLanguage={originalLanguage}
-        originalText={originalText}
-        handleSubmit={handleSubmit}
-      />
+      <CardTranslate handleSubmit={handleSubmit} />
       <CardResultTranslate />
     </div>
   )

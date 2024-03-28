@@ -5,7 +5,7 @@ import type { CardTranslateView } from '../../Types';
 import { MultiOption } from '../MultiOption';
 import { getAllLanguages } from '../../utils';
 
-const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguage, originalText, textAreaRef, handleSubmit }) => {
+const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguageCode: originalLanguage, originalText, textAreaRef, handleSubmit }) => {
   return (
     <form className='card' onSubmit={handleSubmit}>
       <div className="card-translate__header">

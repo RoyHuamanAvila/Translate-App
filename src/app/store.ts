@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import translateReducer from "../features/translate/translateSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    translate: translateReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

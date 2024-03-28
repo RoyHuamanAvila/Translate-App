@@ -80,16 +80,16 @@ export interface Match {
 }
 
 export interface CardTranslate {
-  originalText: string;
-  originalLanguage: LanguageCode;
-  changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
-  changeOriginalLanguage: (
-    e: FormEvent<HTMLInputElement | HTMLSelectElement>
-  ) => void;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 export interface CardTranslateView extends CardTranslate {
+  originalText: string;
+  originalLanguageCode: LanguageCode;
+  changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void;
+  changeOriginalLanguage: (
+    e: FormEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
   handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>) => void;
   textAreaRef: RefObject<HTMLTextAreaElement>;
 }
