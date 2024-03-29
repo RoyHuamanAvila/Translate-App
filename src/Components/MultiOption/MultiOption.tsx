@@ -11,12 +11,12 @@ interface MultiOptionProps {
 
 const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, currentOption }) => {
   return (
-    <span className="multi-option">
+    <div className="multi-option">
       {
         options.map(option => {
           const fixedID = `${prefix}_${option}`
           return (
-            <span key={fixedID}>
+            <div className="option" key={fixedID}>
               <input
                 id={fixedID}
                 type="radio"
@@ -28,11 +28,11 @@ const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, cur
                 readOnly
               />
               <label htmlFor={fixedID}>{option}</label>
-            </span>
+            </div>
           )
         })
       }
-    </span>
+    </div>
   )
 }
 export default MultiOption

@@ -1,12 +1,19 @@
 .multi-option {
-  
+  display: flex;
+  align-items: center;  
+  justify-items: center;
+  flex-wrap: nowrap;  
+}
+
+.option {
+  display: flex;
 }
 
 .option-input[type="radio"] {
   appearance: none;
 }
 
-.option-input[type="radio"] + label {
+.option-input[type="radio"] + label {  
   text-transform: capitalize;
   text-wrap: nowrap;
   display: inline-block;
