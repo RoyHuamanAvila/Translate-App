@@ -3,7 +3,7 @@ import CardTranslateView from "./CardTranslateView"
 import { copyToClipBoard } from "../../utils";
 import type { CardTranslate } from "../../Types";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setOriginalText } from "../../features/translate/translateSlice";
+import { setOriginalLanguageCode, setOriginalText } from "../../features/translate/translateSlice";
 
 const CardTranslateContainer: FC<CardTranslate> = ({ handleSubmit }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -23,8 +23,8 @@ const CardTranslateContainer: FC<CardTranslate> = ({ handleSubmit }) => {
   }
 
   const handleChangeOriginalLanguage = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
-    e.preventDefault();
-    dispatch(setOriginalText(e.currentTarget.value));
+    const languageCode = e.currentTarget.value;
+    dispatch(setOriginalLanguageCode(languageCode));
   }
 
   return (

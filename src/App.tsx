@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <CardTranslate handleSubmit={handleSubmit} />
-      <CardResultTranslate />
+      {/* <CardResultTranslate /> */}
     </div>
   )
 }

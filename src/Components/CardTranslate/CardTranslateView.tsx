@@ -3,18 +3,18 @@ import { FC } from 'react'
 import { Copy, SortAlfa, SoundMaxFill } from "../SVG";
 import type { CardTranslateView } from '../../Types';
 import { MultiOption } from '../MultiOption';
-import { getAllLanguages } from '../../utils';
+import { getAllLanguagesName, getLanguageName } from '../../utils';
 
-const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguageCode: originalLanguage, originalText, textAreaRef, handleSubmit }) => {
+const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguageCode, originalText, textAreaRef, handleSubmit }) => {
   return (
     <form className='card' onSubmit={handleSubmit}>
       <div className="card-translate__header">
         <MultiOption
           name='languageOriginal'
           prefix='language-original'
-          options={getAllLanguages()}
+          options={getAllLanguagesName()}
           onClick={changeOriginalLanguage}
-          currentOption={originalLanguage}
+          currentOption={getLanguageName(originalLanguageCode)}
         />
       </div>
       <hr />

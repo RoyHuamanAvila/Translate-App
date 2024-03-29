@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LanguageCode } from "../../Types";
+import { getLanguageCode } from "../../utils";
 
 interface TranslateState {
   originalText: string;
@@ -19,17 +20,19 @@ export const translateSlice = createSlice({
   name: "Translator",
   initialState,
   reducers: {
-    setOriginalText: (state, action) => {
+    setOriginalText: (state, action: PayloadAction<string>) => {
       state.originalText = action.payload;
     },
-    setOriginalLanguageCode: (state, action) => {
-      state.originalLanguageCode = action.payload;
+    setOriginalLanguageCode: (state, action: PayloadAction<string>) => {
+      const languageCode = action.payload;
+      state.originalLanguageCode = getLanguageCode(languageCode);
     },
-    setTranslateText: (state, action) => {
+    setTranslateText: (state, action: PayloadAction<string>) => {
       state.translateText = action.payload;
     },
-    setTranslateLanguageCode: (state, action) => {
-      state.translateLanguageCode = action.payload;
+    setTranslateLanguageCode: (state, action: PayloadAction<string>) => {
+      const languageCode = action.payload;
+      state.originalLanguageCode = getLanguageCode(languageCode);
     },
   },
 });
