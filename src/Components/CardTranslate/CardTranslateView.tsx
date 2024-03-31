@@ -4,15 +4,19 @@ import { Copy, SortAlfa, SoundMaxFill } from "../SVG";
 import type { CardTranslateView } from '../../Types';
 import { MultiOption } from '../MultiOption';
 import { getAllLanguagesName, getLanguageName } from '../../utils';
+import { withList } from '../../HighOrderComponents';
+
+const MultiOptionWithList = withList(MultiOption, {
+  options: getAllLanguagesName(),
+  name: 'original-language',
+});
 
 const CardTranslateView: FC<CardTranslateView> = ({ changeOriginalLanguage, changeOriginalText, handleCopyToClipboard, originalLanguageCode, originalText, textAreaRef, handleSubmit }) => {
   return (
     <form className='card' onSubmit={handleSubmit}>
       <div className="card-translate__header">
-        <MultiOption
-          name='languageOriginal'
+        <MultiOptionWithList
           prefix='language-original'
-          options={getAllLanguagesName()}
           onClick={changeOriginalLanguage}
           currentOption={getLanguageName(originalLanguageCode)}
         />

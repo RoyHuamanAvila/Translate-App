@@ -93,3 +93,5 @@ export interface CardTranslateView extends CardTranslate {
   handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>) => void;
   textAreaRef: RefObject<HTMLTextAreaElement>;
 }
+
+export type OmitMultiple<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
