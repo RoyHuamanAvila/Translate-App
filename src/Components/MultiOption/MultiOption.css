@@ -1,8 +1,51 @@
 .multi-option {
   display: flex;
+  width: 100%;
   align-items: center;  
   justify-items: center;
   flex-wrap: nowrap;  
+  overflow: hidden;
+}
+
+.multi-option-container {
+  display: flex;      
+  height: 100%;
+  align-items: center;
+  overflow: hidden;
+}
+
+.multi-option-select{  
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--slate-gray);
+  font-weight: var(--medium-font-weight);
+  border-radius: 0.75rem;
+  transition: all 0.25s;
+  cursor: pointer;
+  outline: none;
+
+  
+  @media screen and (min-width: 640px) {
+    font-size: var(--medium-font-size);
+    font-weight: var(--semi-font-weight);
+  }
+
+  &.active {
+    color: var(--ghost-white);
+    background-color: var(--raisin-black);
+  }
+
+  &:hover {
+    color: var(--ghost-white);
+    background-color: var(--raisin-black);
+    transition: all 0.25s;
+  }
+
+  option {
+    color: var(--ghost-white);
+    background-color: var(--raisin-black);
+  }
 }
 
 .option {
