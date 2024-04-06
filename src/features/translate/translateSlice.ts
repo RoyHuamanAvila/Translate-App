@@ -32,7 +32,7 @@ export const translateSlice = createSlice({
     },
     setTranslateLanguageCode: (state, action: PayloadAction<string>) => {
       const languageCode = action.payload;
-      state.originalLanguageCode = getLanguageCode(languageCode);
+      state.translateLanguageCode = getLanguageCode(languageCode);
     },
   },
 });
