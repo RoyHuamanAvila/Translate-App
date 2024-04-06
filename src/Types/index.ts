@@ -3,8 +3,8 @@ import { FormEvent, RefObject } from "react";
 export enum LanguageCode {
   "Detect_Language" = "autodetect",
   "English" = "en",
-  "Spanish" = "es",
   "French" = "fr",
+  "Spanish" = "es",
   "German" = "de",
   "Italian" = "it",
   "Japanese" = "ja",

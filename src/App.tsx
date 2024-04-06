@@ -1,6 +1,6 @@
 import './App.css'
 import { Response } from './Types';
-import { CardTranslate, CardResultTranslate } from './Components';
+import { CardTranslate, CardResultTranslate, FormTranslate } from './Components';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { FormEvent, useEffect } from 'react';
 import { setTranslateText } from './features/translate/translateSlice';
@@ -36,8 +36,9 @@ function App() {
 
   return (
     <div className="App">
-      <CardTranslate handleSubmit={handleSubmit} />
+      {/* <CardTranslate handleSubmit={handleSubmit} /> */}
       {/* <CardResultTranslate /> */}
+      <FormTranslate />
     </div>
   )
 }
