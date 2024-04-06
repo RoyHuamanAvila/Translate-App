@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1rem;  
 
   hr {
     border: 1px solid var(--slate-gray);
@@ -10,24 +10,34 @@
 }
 
 .form__section {
+  display: flex;
+  flex-direction: column;
   background-color: var(--mid-night-blue);
   border: 1px solid var(--slate-gray);
   border-radius: 28px;
   padding: 1rem;
+  min-height: 300px;
 }
 
 .form__textarea {
   font-size: var(--medium-font-size);
+  flex-grow: 1;
 }
 
 .form__footer {
   display: flex;
   justify-content: space-between;
+  align-items: end;
 
   section {
     display: flex;
     gap: 0.5rem;
   }
+}
+
+.form__counter {
+  text-align: right;
+  color: var(--slate-gray);
 }
 
 .btn {
@@ -42,9 +52,31 @@
   border: 2px solid var(--slate-gray);
   border-radius: 12px;
   aspect-ratio: 1/1;
+  transition: 0.25s all;
 
-  svg {
-    display: block;
+  .stroke-dynamic {
+    stroke: var(--slate-gray);
+    transition: 0.25s all;
+  }
+
+  .fill-dynamic {
+    fill: var(--slate-gray);
+    transition: 0.25s all;
+  }
+
+  &:hover {
+    border-color: var(--royal-blue);
+    transition: 0.25s all;
+    
+    .stroke-dynamic {
+      stroke: var(--royal-blue);
+      transition: 0.25s all;
+    }
+
+    .fill-dynamic {
+      fill: var(--royal-blue);
+      transition: 0.25s all;
+    }
   }
 }
 
@@ -54,8 +86,25 @@
   background-color: var(--royal-blue);
   color: var(--ghost-white);
   border: 1px solid var(--cornflower-blue);
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
+  transition: 0.25s all;
+
+  svg path {
+    stroke: var(--ghost-white);
+    transition: 0.25s all;
+  }
+
+  &:hover {
+    background-color: var(--cornflower-blue);
+    color: var(--royal-blue);
+    transition: 0.25s all;
+    
+    svg path{
+      stroke: var(--royal-blue);
+      transition: 0.25s all;
+    }
+  }
 
   @media screen and (min-width: 640px) {
     font-size: var(--medium-font-size);

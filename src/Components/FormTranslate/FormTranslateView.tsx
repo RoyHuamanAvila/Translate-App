@@ -29,11 +29,10 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({ options, originalText, 
           className='form__textarea'
           name="originalText"
           id="originalText"
-          cols={30}
-          rows={10}
           title='Original Text'
           value={originalText}
         ></textarea>
+        <p className='form__counter'>{originalText.length}/500</p>
         <div className="form__footer">
           <section>
             <button className='btn btn-outline' title='Listen'>
@@ -61,8 +60,6 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({ options, originalText, 
           className='form__textarea'
           name="translatedText"
           id="translatedText"
-          cols={30}
-          rows={10}
           title='Translated Text'
           value={translateText}
           readOnly
