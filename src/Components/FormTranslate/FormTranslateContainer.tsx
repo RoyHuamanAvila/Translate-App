@@ -2,7 +2,8 @@ import { FormEvent, useState } from "react"
 import FormTranslateView from "./FormTranslateView"
 import { getAllLanguagesName } from "../../utils";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setOriginalLanguageCode, setOriginalText, setTranslateLanguageCode } from "../../features/translate/translateSlice";
+import { setOriginalLanguageCode, setOriginalText, setTranslateLanguageCode, setTranslateText } from "../../features/translate/translateSlice";
+import { Response } from "../../Types";
 
 const FormTranslateContainer = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +22,25 @@ const FormTranslateContainer = () => {
     dispatch(setOriginalText(e.currentTarget.value));
   }
 
+  const getResponseAPI = async (q: string, langPair: string) => {
+    await fetch(`https://api.mymemory.translated.net/get?q=${q}!&langpair=${langPair}`)
+      .then(response => response.json())
+      .then((data: Response) => {
+        console.log(data);
+        dispatch(setTranslateText(data.responseData.translatedText));
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const langPair = `${originalLanguageCode}|${translateLanguageCode}`;
+
+    getResponseAPI(originalText, langPair);
+  }
+
   return (
     <FormTranslateView
       options={options}
@@ -31,6 +51,7 @@ const FormTranslateContainer = () => {
       changeOriginalLanguage={changeOriginalLanguage}
       changeTranslateLanguage={changeTranslateLanguage}
       changeOriginalText={changeOriginalText}
+      handleSubmit={handleSubmit}
     />
   )
 }

@@ -14,6 +14,7 @@ interface FormTranslateViewProps {
   changeOriginalLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
   changeTranslateLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
   changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void
 }
 
 const FormTranslateView: FC<FormTranslateViewProps> = ({
@@ -25,9 +26,10 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
   changeOriginalLanguage,
   changeTranslateLanguage,
   changeOriginalText,
+  handleSubmit
 }) => {
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <section className="form__section">
         <MultiOption
           currentOption={getLanguageName(originalLanguageCode)}
@@ -55,7 +57,7 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
               <Copy />
             </button>
           </section>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" type="submit">
             <SortAlfa /> Translate
           </button>
         </div>
