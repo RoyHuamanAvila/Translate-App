@@ -40,7 +40,7 @@ const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, cur
                   checked={option === currentOption}
                   readOnly
                 />
-                <label htmlFor={fixedID}>{option}</label>
+                <label htmlFor={fixedID}>{option.replace('_', ' ')}</label>
               </div>
             )
           })

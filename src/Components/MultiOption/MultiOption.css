@@ -7,11 +7,11 @@
   overflow: hidden;
 }
 
-.multi-option-container {
-  display: flex;      
-  height: 100%;
-  align-items: center;
+.multi-option-container {  
+  display: flex;        
+  align-items: center;  
   overflow: hidden;
+  margin-right: 0.5rem;
 }
 
 .multi-option-select{  
