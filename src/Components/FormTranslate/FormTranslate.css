@@ -109,6 +109,7 @@
   border-radius: 12px;
   transition: 0.25s all;
   font-weight: var(--semi-font-weight);
+  font-size: var(--medium-font-size);
 
   svg path {
     stroke: var(--ghost-white);
@@ -124,9 +125,5 @@
       stroke: var(--royal-blue);
       transition: 0.25s all;
     }
-  }
-
-  @media screen and (min-width: 640px) {
-    font-size: var(--medium-font-size);
   }
 }
