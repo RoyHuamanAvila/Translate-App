@@ -1,8 +1,8 @@
 import './App.css'
 import { Response } from './Types';
-import { CardTranslate, CardResultTranslate, FormTranslate } from './Components';
+import { FormTranslate } from './Components';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import { FormEvent, useEffect } from 'react';
+import { useEffect } from 'react';
 import { setTranslateText } from './features/translate/translateSlice';
 
 function App() {
@@ -21,13 +21,6 @@ function App() {
       })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const langPair = `${originalLanguageCode}|${translateLanguageCode}`;
-
-    getResponseAPI(originalText, langPair);
-  }
-
   useEffect(() => {
     const langPair = `${originalLanguageCode}|${translateLanguageCode}`;
 
@@ -36,8 +29,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <CardTranslate handleSubmit={handleSubmit} /> */}
-      {/* <CardResultTranslate /> */}
       <FormTranslate />
     </div>
   )

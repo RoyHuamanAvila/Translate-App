@@ -39,6 +39,13 @@
 
 .form__textarea {
   font-size: var(--medium-font-size);
+  background-color: transparent;
+  color: var(--ghost-white);
+  font-weight: var(--semi-font-weight);
+  border: none;
+  resize: none;
+  outline: none;
+  width: 100%;
   flex-grow: 1;
 }
 
