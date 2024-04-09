@@ -19,7 +19,7 @@
 .form__section {
   display: flex;
   flex-direction: column;  
-  border: 1px solid var(--slate-gray);
+  border: 1.5px solid var(--slate-gray);
   border-radius: 28px;
   padding: 1.5rem;
   min-height: 300px;
@@ -54,8 +54,9 @@
 }
 
 .form__counter {
+  font-size: var(--small-font-size);
   text-align: right;
-  color: var(--slate-gray);
+  color: var(--light-steel-blue);
 }
 
 .btn {
