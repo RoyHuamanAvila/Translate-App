@@ -30,7 +30,7 @@
   cursor: pointer;
   outline: none;
 
-  background-image: url("/public/Expand_down.svg");
+  background-image: url("/Expand_down.svg");
   background-repeat: no-repeat;
   background-position: right 0.5rem top 50%;
   font-size: var(--medium-font-size);
