@@ -37,6 +37,11 @@
   }
 }
 
+.form__section__header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .form__textarea {
   font-size: var(--medium-font-size);
   background-color: transparent;

@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react"
 import FormTranslateView from "./FormTranslateView"
 import { getAllLanguagesName } from "../../utils";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setOriginalLanguageCode, setOriginalText, setTranslateLanguageCode, setTranslateText } from "../../features/translate/translateSlice";
+import { alternateLanguages, setOriginalLanguageCode, setOriginalText, setTranslateLanguageCode, setTranslateText } from "../../features/translate/translateSlice";
 import { Response } from "../../Types";
 
 const FormTranslateContainer = () => {
@@ -51,6 +51,11 @@ const FormTranslateContainer = () => {
     speechSynthesis.speak(new SpeechSynthesisUtterance(text));
   }
 
+  const handleAlternateLanguages = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    dispatch(alternateLanguages());
+  }
+
   return (
     <FormTranslateView
       options={options}
@@ -64,6 +69,7 @@ const FormTranslateContainer = () => {
       handleSubmit={handleSubmit}
       handleCopyToClipboard={handleCopyToClipboard}
       handleSpeech={handleSpeech}
+      handleAlternateLanguages={handleAlternateLanguages}
     />
   )
 }

@@ -34,6 +34,18 @@ export const translateSlice = createSlice({
       const languageCode = action.payload;
       state.translateLanguageCode = getLanguageCode(languageCode);
     },
+    alternateLanguages: (state) => {
+      if (state.originalLanguageCode !== LanguageCode.Detect_Language) {
+        [state.originalLanguageCode, state.translateLanguageCode] = [
+          state.translateLanguageCode,
+          state.originalLanguageCode,
+        ];
+        [state.originalText, state.translateText] = [
+          state.translateText,
+          state.originalText,
+        ];
+      }
+    },
   },
 });
 
@@ -42,6 +54,7 @@ export const {
   setOriginalLanguageCode,
   setTranslateText,
   setTranslateLanguageCode,
+  alternateLanguages,
 } = translateSlice.actions;
 
 export default translateSlice.reducer;

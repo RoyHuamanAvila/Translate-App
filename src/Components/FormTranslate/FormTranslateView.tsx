@@ -3,7 +3,7 @@ import { MultiOption } from "../MultiOption";
 import "./FormTranslate.css";
 import { getLanguageName } from "../../utils";
 import { LanguageCode } from "../../Types";
-import { Copy, SortAlfa, SoundMaxFill } from "../SVG";
+import { ArrowsLeftRight, Copy, SortAlfa, SoundMaxFill } from "../SVG";
 
 interface FormTranslateViewProps {
   options: string[];
@@ -17,6 +17,7 @@ interface FormTranslateViewProps {
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void
   handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>, text: string) => void
   handleSpeech: (e: FormEvent<HTMLButtonElement>, text: string) => void
+  handleAlternateLanguages: (e: FormEvent<HTMLButtonElement>) => void
 }
 
 const FormTranslateView: FC<FormTranslateViewProps> = ({
@@ -30,18 +31,24 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
   changeOriginalText,
   handleSubmit,
   handleCopyToClipboard,
-  handleSpeech
+  handleSpeech,
+  handleAlternateLanguages,
 }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <section className="form__section">
-        <MultiOption
-          currentOption={getLanguageName(originalLanguageCode)}
-          options={options}
-          name="originalLanguage"
-          onClick={changeOriginalLanguage}
-          prefix="originalLanguage"
-        />
+        <div className="form__section__header">
+          <MultiOption
+            currentOption={getLanguageName(originalLanguageCode)}
+            options={options}
+            name="originalLanguage"
+            onClick={changeOriginalLanguage}
+            prefix="originalLanguage"
+          />
+          <button className="btn btn-outline" title="Alternate Languages" onClick={handleAlternateLanguages}>
+            <ArrowsLeftRight />
+          </button>
+        </div>
         <hr />
         <textarea
           className="form__textarea"
