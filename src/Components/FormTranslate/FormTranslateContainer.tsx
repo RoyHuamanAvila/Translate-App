@@ -7,7 +7,7 @@ import { Response } from "../../Types";
 
 const FormTranslateContainer = () => {
   const dispatch = useAppDispatch();
-  const [options, setOptions] = useState<string[]>(getAllLanguagesName());
+  const [options] = useState<string[]>(getAllLanguagesName());
   const { originalText, translateText, originalLanguageCode, translateLanguageCode } = useAppSelector(state => state.translate);
 
   const changeOriginalLanguage = (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -41,6 +41,16 @@ const FormTranslateContainer = () => {
     getResponseAPI(originalText, langPair);
   }
 
+  const handleCopyToClipboard = async (e: FormEvent<HTMLButtonElement>, text: string) => {
+    e.preventDefault();
+    await navigator.clipboard.writeText(text);
+  }
+
+  const handleSpeech = (e: FormEvent<HTMLButtonElement>, text: string) => {
+    e.preventDefault();
+    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+  }
+
   return (
     <FormTranslateView
       options={options}
@@ -52,6 +62,8 @@ const FormTranslateContainer = () => {
       changeTranslateLanguage={changeTranslateLanguage}
       changeOriginalText={changeOriginalText}
       handleSubmit={handleSubmit}
+      handleCopyToClipboard={handleCopyToClipboard}
+      handleSpeech={handleSpeech}
     />
   )
 }

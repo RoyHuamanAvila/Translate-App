@@ -15,6 +15,8 @@ interface FormTranslateViewProps {
   changeTranslateLanguage: (e: FormEvent<HTMLInputElement | HTMLSelectElement>) => void
   changeOriginalText: (e: FormEvent<HTMLTextAreaElement>) => void
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void
+  handleCopyToClipboard: (e: FormEvent<HTMLButtonElement>, text: string) => void
+  handleSpeech: (e: FormEvent<HTMLButtonElement>, text: string) => void
 }
 
 const FormTranslateView: FC<FormTranslateViewProps> = ({
@@ -26,7 +28,9 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
   changeOriginalLanguage,
   changeTranslateLanguage,
   changeOriginalText,
-  handleSubmit
+  handleSubmit,
+  handleCopyToClipboard,
+  handleSpeech
 }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -50,10 +54,10 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
         <p className="form__counter">{originalText.length}/500</p>
         <div className="form__footer">
           <section>
-            <button className="btn btn-outline" title="Listen">
+            <button className="btn btn-outline" title="Listen" onClick={(e) => handleSpeech(e, originalText)}>
               <SoundMaxFill />
             </button>
-            <button className="btn btn-outline" title="Copy">
+            <button className="btn btn-outline" title="Copy" onClick={(e) => handleCopyToClipboard(e, originalText)}>
               <Copy />
             </button>
           </section>
@@ -81,10 +85,10 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
         ></textarea>
         <div className="form__footer">
           <section>
-            <button className="btn btn-outline" title="Listen">
+            <button className="btn btn-outline" title="Listen" onClick={(e) => handleSpeech(e, translateText)}>
               <SoundMaxFill />
             </button>
-            <button className="btn btn-outline" title="Copy">
+            <button className="btn btn-outline" title="Copy" onClick={(e) => handleCopyToClipboard(e, translateText)}>
               <Copy />
             </button>
           </section>
