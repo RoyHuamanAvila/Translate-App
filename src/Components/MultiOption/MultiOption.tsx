@@ -12,14 +12,20 @@ interface MultiOptionProps {
 const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, currentOption }) => {
   const [radioOptions, setRadioOptions] = useState<string[]>([])
   const [selectOptions, setSelectOptions] = useState<string[]>([])
+  const [selectedOption, setSelectedOption] = useState<string>('')
 
   useEffect(() => {
     setRadioOptions(options.slice(0, 3));
     setSelectOptions(options.slice(3));
   }, [])
 
+  useEffect(() => {
+    if (options.includes(currentOption)) setSelectedOption(currentOption);
+  }, [currentOption])
+
   const handleSelectChange = (e: FormEvent<HTMLSelectElement>) => {
     onClick(e as any);
+    setSelectedOption(e.currentTarget.value);
   }
 
   return (
@@ -46,7 +52,13 @@ const MultiOption: FC<MultiOptionProps> = ({ name, options, prefix, onClick, cur
           })
         }
       </div>
-      <select className={`multi-option-select ${selectOptions.includes(currentOption) ? 'active' : ''}`} name={name} title={name} onChange={handleSelectChange}>
+      <select
+        className={`multi-option-select ${selectOptions.includes(currentOption) ? 'active' : ''}`}
+        name={name}
+        title={name}
+        onChange={handleSelectChange}
+        value={selectedOption}
+      >
         {selectOptions.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}
