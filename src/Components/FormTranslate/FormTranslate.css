@@ -43,6 +43,7 @@
 }
 
 .form__textarea {
+  padding: 1rem 0;
   font-size: var(--medium-font-size);
   background-color: transparent;
   color: var(--ghost-white);

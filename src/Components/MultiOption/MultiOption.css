@@ -5,6 +5,7 @@
   justify-items: center;
   flex-wrap: nowrap;  
   overflow: hidden;
+  padding-bottom: 0.5rem;
 }
 
 .multi-option-container {  

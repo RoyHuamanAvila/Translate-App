@@ -45,9 +45,6 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
             onClick={changeOriginalLanguage}
             prefix="originalLanguage"
           />
-          <button className="btn btn-outline" title="Alternate Languages" onClick={handleAlternateLanguages}>
-            <ArrowsLeftRight />
-          </button>
         </div>
         <hr />
         <textarea
@@ -74,13 +71,18 @@ const FormTranslateView: FC<FormTranslateViewProps> = ({
         </div>
       </section>
       <section className="form__section">
-        <MultiOption
-          currentOption={getLanguageName(translateLanguageCode)}
-          options={options.slice(1)}
-          name="translateLanguage"
-          onClick={changeTranslateLanguage}
-          prefix="translateLanguage"
-        />
+        <div className="form__section__header">
+          <MultiOption
+            currentOption={getLanguageName(translateLanguageCode)}
+            options={options.slice(1)}
+            name="translateLanguage"
+            onClick={changeTranslateLanguage}
+            prefix="translateLanguage"
+          />
+          <button className="btn btn-outline" title="Alternate Languages" onClick={handleAlternateLanguages}>
+            <ArrowsLeftRight />
+          </button>
+        </div>
         <hr />
         <textarea
           className="form__textarea"
